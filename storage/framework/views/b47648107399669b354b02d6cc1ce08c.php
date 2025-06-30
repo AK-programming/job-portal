@@ -9,7 +9,7 @@
     <?php if(session('user') && session('user')->UserType === 'employer'): ?>
         <a href="<?php echo e(route('jobs.create')); ?>" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium <?php echo e(request()->routeIs('jobs.create') ? 'bg-white/10' : ''); ?>">Post Job</a>
     <?php endif; ?>
-    <?php if(session('user') && session('user')->UserID == 13 && session('user')->UserType === 'employer'): ?>
+    <?php if(session('user') && session('user')->UserID == 3 && session('user')->UserType === 'employer'): ?>
         <a href="<?php echo e(route('admin.page')); ?>" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium <?php echo e(request()->routeIs('admin.page') ? 'bg-white/10' : ''); ?>">Admin</a>
     <?php endif; ?>
     <a href="<?php echo e(route('profile')); ?>" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium <?php echo e(request()->routeIs('profile') ? 'bg-white/10' : ''); ?>">Profile</a>

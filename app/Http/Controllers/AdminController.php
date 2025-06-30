@@ -12,7 +12,7 @@ class AdminController extends Controller
     private function guardAdmin()
     {
         $user = Session::get('user');
-        if (!$user || $user->UserID !== 13 || $user->UserType !== 'employer') {
+        if (!$user || $user->UserID !== 3 || $user->UserType !== 'employer') {
             abort(403, 'Unauthorized.');
         }
     }

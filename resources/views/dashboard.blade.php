@@ -9,7 +9,7 @@
     @if(session('user') && session('user')->UserType === 'employer')
         <a href="{{ route('jobs.create') }}" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium {{ request()->routeIs('jobs.create') ? 'bg-white/10' : '' }}">Post Job</a>
     @endif
-    @if(session('user') && session('user')->UserID == 13 && session('user')->UserType === 'employer')
+    @if(session('user') && session('user')->UserID == 3 && session('user')->UserType === 'employer')
         <a href="{{ route('admin.page') }}" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium {{ request()->routeIs('admin.page') ? 'bg-white/10' : '' }}">Admin</a>
     @endif
     <a href="{{ route('profile') }}" class="text-white/90 hover:text-white px-3 py-2 rounded transition font-medium {{ request()->routeIs('profile') ? 'bg-white/10' : '' }}">Profile</a>

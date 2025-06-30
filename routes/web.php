@@ -2,14 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\DB;
 
-// 🧪 Test route for debugging
 Route::get('/test', function () {
     return response()->json([
         'status' => 'success',
@@ -20,7 +19,6 @@ Route::get('/test', function () {
     ]);
 });
 
-// 🔍 Environment check route
 Route::get('/env-check', function () {
     try {
         $dbConnection = DB::connection()->getPdo();
@@ -28,7 +26,7 @@ Route::get('/env-check', function () {
     } catch (Exception $e) {
         $dbStatus = 'failed: ' . $e->getMessage();
     }
-    
+
     return response()->json([
         'app_key' => config('app.key') ? 'set' : 'missing',
         'app_debug' => config('app.debug'),
@@ -40,7 +38,7 @@ Route::get('/env-check', function () {
 
 // ✅ Redirect root URL to login
 Route::get('/', function () {
-    return response('OK', 200);
+    return redirect()->route('login');
 });
 
 // 🔐 Authentication Routes
@@ -53,7 +51,7 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
 
 // 🏠 Dashboard (after login)
-Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // 👤 Profile
 Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
@@ -74,11 +72,10 @@ Route::post('/employer/applications/{id}/reject', [ApplicationController::class,
 // 📄 Jobseeker: View My Applications
 Route::get('/my-applications', [ApplicationController::class, 'myApplications'])->name('jobseeker.applications');
 
-
-//admin
+// 🛠️ Admin Routes
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.page');
 Route::post('/admin/employer/{id}', [AdminController::class, 'updateEmployer'])->name('admin.update.employer');
 Route::post('/admin/application/{id}', [AdminController::class, 'updateApplication'])->name('admin.update.application');
 
-//companyname
+// 🏢 Employer Company Name Update
 Route::post('/employer/company-name', [AuthController::class, 'updateCompanyName'])->name('employer.update.company');
