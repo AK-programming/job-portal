@@ -1,0 +1,57 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/storage/oauth-private.key
+/storage/oauth-public.key
+/storage/pail
+/.env
+.env.backup
+.env.production
+.env.testing
+.phpunit.result.cache
+.phpunit.cache
+phpunit.xml
+
+# Laravel IDE helpers
+/_ide_helper.php
+/_ide_helper_models.php
+/.phpactor.json
+
+# Laravel Nova
+/.nova
+
+# Laravel Vapor
+.vapor/
+
+# Laravel Forge
+forge.env
+
+# Build artifacts
+/public/build
+/public/hot
+/public/mix-manifest.json
+
+# IDEs and Editors
+/.vscode
+/.idea
+/.fleet
+/.zed
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Auth
+/auth.json
+
+# Composer and npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Homestead
+Homestead.yaml
+Homestead.json
